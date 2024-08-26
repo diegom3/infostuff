@@ -6,9 +6,6 @@ parameters:
     type: String
     description: "Name of the share to modify"
     default: "share"
-  FileSystemId:
-    type: String
-    description: "ID of the FSx File System"
   InstanceId:
     type: String
     description: "ID of the instance where the command will run"
@@ -17,7 +14,8 @@ mainSteps:
     name: "RemoveEveryonePermission"
     inputs:
       DocumentName: "AWS-RunPowerShellScript"
-      InstanceIds: ["{{ InstanceId }}"]
+      InstanceIds:
+        - "{{ InstanceId }}"
       Parameters:
         commands:
           - 'Remove-SmbShareAccess -Name "{{ ShareName }}" -AccountName "Everyone" -Force'
