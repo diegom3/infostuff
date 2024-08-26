@@ -1,0 +1,21 @@
+---
+schemaVersion: '2.2'
+description: "Remove Everyone permission from FSx share"
+parameters:
+  ShareName:
+    type: String
+    description: "Name of the share to modify"
+  FileSystemId:
+    type: String
+    description: "ID of the FSx File System"
+mainSteps:
+  - action: "aws:runCommand"
+    name: "RemoveEveryonePermission"
+    inputs:
+      DocumentName: "AWS-RunPowerShellScript"
+      Parameters:
+        commands:
+          - 'Remove-SmbShareAccess -Name "{{ ShareName }}" -AccountName "Everyone" -Force'
+targets:
+  - key: tag:Name
+    values: ["fsx-file-system"]
