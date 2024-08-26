@@ -10,12 +10,8 @@ parameters:
     type: String
     description: "ID of the instance where the command will run"
 mainSteps:
-  - action: "aws:runCommand"
+  - action: "aws:runShellScript"
     name: "RemoveEveryonePermission"
     inputs:
-      DocumentName: "AWS-RunPowerShellScript"
-      InstanceIds:
-        - "{{ InstanceId }}"
-      Parameters:
-        commands:
-          - 'Remove-SmbShareAccess -Name "{{ ShareName }}" -AccountName "Everyone" -Force'
+      runCommand:
+        - 'Remove-SmbShareAccess -Name "{{ ShareName }}" -AccountName "Everyone" -Force'
