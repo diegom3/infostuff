@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "invokingEvent": "{\"configurationItem\": {\"resourceType\": \"AWS::FSx::FileSystem\", \"resourceId\": \"fs-0123456789abcdef0\", \"configurationItemStatus\": \"ResourceDiscovered\"}}",
+  "ruleParameters": "{}",
+  "resultToken": "testToken",
+  "eventLeftScope": false,
+  "executionRoleArn": "arn:aws:iam::123456789012:role/AWSConfigRole",
+  "configRuleArn": "arn:aws:config:us-east-1:123456789012:config-rule/config-rule-abcde1234",
+  "configRuleName": "FSxCreationCustomRule",
+  "configRuleId": "config-rule-abcde1234",
+  "accountId": "123456789012",
+  "notificationCreationTime": "2023-08-01T12:00:00Z",
+  "resourceType": "AWS::FSx::FileSystem",
+  "resourceId": "fs-0123456789abcdef0",
+  "awsRegion": "us-east-1"
+}
