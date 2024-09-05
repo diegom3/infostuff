@@ -1,15 +1,26 @@
 import json
 import boto3
+import logging
+
+# Initialize logger
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 sns_client = boto3.client('sns')
 sns_topic_arn = 'arn:aws:sns:<region>:<account-id>:<sns-topic-name>'  # Replace with your SNS topic ARN
 
 def lambda_handler(event, context):
-    # Parse the invokingEvent, which is a stringified JSON
+    # Log the incoming event for debugging purposes
+    logger.info("Received event: %s", json.dumps(event))
+    
+    # Parse the invokingEvent which is a stringified JSON
     invoking_event_str = event.get('invokingEvent', '{}')
     
     # Convert the stringified JSON into a dictionary
     invoking_event = json.loads(invoking_event_str)
+    
+    # Log the parsed invokingEvent for clarity
+    logger.info("Parsed invokingEvent: %s", json.dumps(invoking_event))
     
     # Check if 'configurationItem' exists in the parsed invokingEvent
     configuration_item = invoking_event.get('configurationItem')
