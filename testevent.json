@@ -17,23 +17,26 @@
 
 
 Test Event Name
-(unsaved) test event
+testevent
 
 Response
 {
   "errorMessage": "'configurationItem'",
   "errorType": "KeyError",
-  "requestId": "acdfd795-6bb4-490b-bfb4-d692fdc299ab",
+  "requestId": "59ff6c87-62f0-47ab-bdc8-8b068e769f72",
   "stackTrace": [
     "  File \"/var/task/lambda_function.py\", line 9, in lambda_handler\n    configuration_item = event['configurationItem']\n"
   ]
 }
 
 Function Logs
-START RequestId: acdfd795-6bb4-490b-bfb4-d692fdc299ab Version: $LATEST
+START RequestId: 59ff6c87-62f0-47ab-bdc8-8b068e769f72 Version: $LATEST
 LAMBDA_WARNING: Unhandled exception. The most likely cause is an issue in the function code. However, in rare cases, a Lambda runtime update can cause unexpected function behavior. For functions using managed runtimes, runtime updates can be triggered by a function change, or can be applied automatically. To determine if the runtime has been updated, check the runtime version in the INIT_START log entry. If this error correlates with a change in the runtime version, you may be able to mitigate this error by temporarily rolling back to the previous runtime version. For more information, see https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html
 [ERROR] KeyError: 'configurationItem'
 Traceback (most recent call last):
   File "/var/task/lambda_function.py", line 9, in lambda_handler
-    configuration_item = event['configurationItem']END RequestId: acdfd795-6bb4-490b-bfb4-d692fdc299ab
-REPORT RequestId: acdfd795-6bb4-490b-bfb4-d692fdc299ab	Duration: 2.06 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 73 MB
+    configuration_item = event['configurationItem']END RequestId: 59ff6c87-62f0-47ab-bdc8-8b068e769f72
+REPORT RequestId: 59ff6c87-62f0-47ab-bdc8-8b068e769f72	Duration: 3.02 ms	Billed Duration: 4 ms	Memory Size: 128 MB	Max Memory Used: 73 MB
+
+Request ID
+59ff6c87-62f0-47ab-bdc8-8b068e769f72
