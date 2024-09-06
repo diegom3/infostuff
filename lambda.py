@@ -14,11 +14,11 @@ def lambda_handler(event, context):
     logger.info("Received event: %s", json.dumps(event))
     
     # Check if the event is an FSx CreateFileSystem event
-    if 'eventName' in event and event['eventName'] == 'CreateFileSystem':
+    if 'detail' in event and event['detail']['eventName'] == 'CreateFileSystem':
         # Ensure 'responseElements' and 'fileSystem' are present in the event
-        if 'responseElements' in event and 'fileSystem' in event['responseElements']:
+        if 'responseElements' in event['detail'] and 'fileSystem' in event['detail']['responseElements']:
             # Extract relevant details
-            file_system_details = event['responseElements']['fileSystem']
+            file_system_details = event['detail']['responseElements']['fileSystem']
             file_system_id = file_system_details['fileSystemId']
             file_system_type = file_system_details.get('fileSystemType', 'Unknown')
             storage_capacity = file_system_details.get('storageCapacity', 'Unknown')
