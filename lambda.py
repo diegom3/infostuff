@@ -14,15 +14,20 @@ def lambda_handler(event, context):
     logger.info("Received event: %s", json.dumps(event))
     
     # Check if the event is an FSx CreateFileSystem event
-    if 'detail' in event and event['detail']['eventName'] == 'CreateFileSystem':
-        # Ensure 'responseElements' and 'fileSystemId' are present in the event
-        if 'responseElements' in event['detail'] and 'fileSystemId' in event['detail']['responseElements']:
+    if 'eventName' in event and event['eventName'] == 'CreateFileSystem':
+        # Ensure 'responseElements' and 'fileSystem' are present in the event
+        if 'responseElements' in event and 'fileSystem' in event['responseElements']:
             # Extract relevant details
-            file_system_id = event['detail']['responseElements']['fileSystemId']
-            file_system_type = event['detail']['responseElements'].get('fileSystemType', 'Unknown')
+            file_system_details = event['responseElements']['fileSystem']
+            file_system_id = file_system_details['fileSystemId']
+            file_system_type = file_system_details.get('fileSystemType', 'Unknown')
+            storage_capacity = file_system_details.get('storageCapacity', 'Unknown')
 
             # Construct the notification message
-            message = f"A new FSx file system has been created.\nFile System ID: {file_system_id}\nFile System Type: {file_system_type}"
+            message = (f"A new FSx file system has been created.\n"
+                       f"File System ID: {file_system_id}\n"
+                       f"File System Type: {file_system_type}\n"
+                       f"Storage Capacity: {storage_capacity} GB")
 
             # Send the notification via SNS
             sns_client.publish(
@@ -35,11 +40,11 @@ def lambda_handler(event, context):
                 'body': json.dumps('Notification sent.')
             }
         else:
-            # Log the case where 'responseElements' or 'fileSystemId' is missing
-            logger.error("CreateFileSystem event does not contain 'responseElements' or 'fileSystemId'. Event: %s", json.dumps(event))
+            # Log the case where 'responseElements' or 'fileSystem' is missing
+            logger.error("CreateFileSystem event does not contain 'responseElements' or 'fileSystem'. Event: %s", json.dumps(event))
             return {
                 'statusCode': 400,
-                'body': json.dumps("CreateFileSystem event missing 'responseElements' or 'fileSystemId'.")
+                'body': json.dumps("CreateFileSystem event missing 'responseElements' or 'fileSystem'.")
             }
     else:
         logger.info("Event is not an FSx CreateFileSystem event.")
