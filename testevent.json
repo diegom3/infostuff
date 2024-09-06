@@ -37,3 +37,15 @@
     "recipientAccountId": "123456789012"
   }
 }
+
+## Event pattern
+
+{
+  "source": ["aws.fsx"],
+  "detail-type": ["AWS API Call via CloudTrail"],
+  "detail": {
+    "eventSource": ["fsx.amazonaws.com"],
+    "eventName": ["CreateFileSystem"]
+  }
+}
+
