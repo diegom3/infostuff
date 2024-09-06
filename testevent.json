@@ -1,42 +1,39 @@
 {
-  "version": "1.0",
-  "invokingEvent": "{\"configurationItem\": {\"resourceType\": \"AWS::FSx::FileSystem\", \"resourceId\": \"fs-0123456789abcdef0\", \"configurationItemStatus\": \"ResourceDiscovered\"}}",
-  "ruleParameters": "{}",
-  "resultToken": "testToken",
-  "eventLeftScope": false,
-  "executionRoleArn": "arn:aws:iam::123456789012:role/AWSConfigRole",
-  "configRuleArn": "arn:aws:config:us-east-1:123456789012:config-rule/config-rule-abcde1234",
-  "configRuleName": "FSxCreationCustomRule",
-  "configRuleId": "config-rule-abcde1234",
-  "accountId": "123456789012",
-  "notificationCreationTime": "2023-08-01T12:00:00Z",
-  "resourceType": "AWS::FSx::FileSystem",
-  "resourceId": "fs-0123456789abcdef0",
-  "awsRegion": "us-east-1"
+  "version": "0",
+  "id": "c7b54b6d-b1f8-4a3e-8e4d-123456789abc",
+  "detail-type": "AWS API Call via CloudTrail",
+  "source": "aws.fsx",
+  "account": "123456789012",
+  "time": "2023-09-05T12:00:00Z",
+  "region": "us-east-1",
+  "resources": [],
+  "detail": {
+    "eventVersion": "1.05",
+    "userIdentity": {
+      "type": "IAMUser",
+      "principalId": "EXAMPLEPRINCIPALID",
+      "arn": "arn:aws:iam::123456789012:user/Alice",
+      "accountId": "123456789012",
+      "userName": "Alice"
+    },
+    "eventTime": "2023-09-05T12:00:00Z",
+    "eventSource": "fsx.amazonaws.com",
+    "eventName": "CreateFileSystem",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-sdk-python/3.7",
+    "requestParameters": {
+      "fileSystemType": "LUSTRE",
+      "storageCapacity": 1200
+    },
+    "responseElements": {
+      "fileSystemId": "fs-0123456789abcdef0",
+      "fileSystemType": "LUSTRE",
+      "lifecycle": "CREATING"
+    },
+    "requestID": "01234567-1234-1234-1234-1234567890ab",
+    "eventID": "abcdef12-3456-7890-abcd-ef1234567890",
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "123456789012"
+  }
 }
-
-
-Test Event Name
-testevent
-
-Response
-{
-  "errorMessage": "'configurationItem'",
-  "errorType": "KeyError",
-  "requestId": "59ff6c87-62f0-47ab-bdc8-8b068e769f72",
-  "stackTrace": [
-    "  File \"/var/task/lambda_function.py\", line 9, in lambda_handler\n    configuration_item = event['configurationItem']\n"
-  ]
-}
-
-Function Logs
-START RequestId: 59ff6c87-62f0-47ab-bdc8-8b068e769f72 Version: $LATEST
-LAMBDA_WARNING: Unhandled exception. The most likely cause is an issue in the function code. However, in rare cases, a Lambda runtime update can cause unexpected function behavior. For functions using managed runtimes, runtime updates can be triggered by a function change, or can be applied automatically. To determine if the runtime has been updated, check the runtime version in the INIT_START log entry. If this error correlates with a change in the runtime version, you may be able to mitigate this error by temporarily rolling back to the previous runtime version. For more information, see https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html
-[ERROR] KeyError: 'configurationItem'
-Traceback (most recent call last):
-  File "/var/task/lambda_function.py", line 9, in lambda_handler
-    configuration_item = event['configurationItem']END RequestId: 59ff6c87-62f0-47ab-bdc8-8b068e769f72
-REPORT RequestId: 59ff6c87-62f0-47ab-bdc8-8b068e769f72	Duration: 3.02 ms	Billed Duration: 4 ms	Memory Size: 128 MB	Max Memory Used: 73 MB
-
-Request ID
-59ff6c87-62f0-47ab-bdc8-8b068e769f72
