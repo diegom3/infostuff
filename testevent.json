@@ -1,55 +1,123 @@
 {
-  "version": "0",
-  "id": "c7b54b6d-b1f8-4a3e-8e4d-123456789abc",
-  "detail-type": "AWS API Call via CloudTrail",
-  "source": "aws.fsx",
-  "account": "123456789012",
-  "time": "2023-09-05T12:00:00Z",
-  "region": "us-east-1",
-  "resources": [],
-  "detail": {
-    "eventVersion": "1.05",
+    "eventVersion": "1.08",
     "userIdentity": {
-      "type": "IAMUser",
-      "principalId": "EXAMPLEPRINCIPALID",
-      "arn": "arn:aws:iam::123456789012:user/Alice",
-      "accountId": "123456789012",
-      "userName": "Alice"
+        "type": "AssumedRole",
+        "principalId": "AROAJXYA5YMTFUMN4FUCI:fsxadmin",
+        "arn": "arn:aws:sts::123456789:assumed-role/FSX/admin",
+        "accountId": "123456789",
+        "accessKeyId": "ASIAVARSAUMPXG6KACL7",
+        "sessionContext": {
+            "sessionIssuer": {
+                "type": "Role",
+                "principalId": "AROAJXYA5YMTFUMN4FUCI",
+                "arn": "arn:aws:iam::123456789:role/cfg-saml-ctp-admin",
+                "accountId": "123456789",
+                "userName": "cfg-saml-ctp-admin"
+            },
+            "webIdFederationData": {},
+            "attributes": {
+                "creationDate": "2024-09-06T13:03:22Z",
+                "mfaAuthenticated": "false"
+            }
+        }
     },
-    "eventTime": "2023-09-05T12:00:00Z",
+    "eventTime": "2024-09-06T13:39:56Z",
     "eventSource": "fsx.amazonaws.com",
     "eventName": "CreateFileSystem",
     "awsRegion": "us-east-1",
-    "sourceIPAddress": "192.0.2.0",
-    "userAgent": "aws-sdk-python/3.7",
+    "sourceIPAddress": "24.206.88.87",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0",
     "requestParameters": {
-      "fileSystemType": "LUSTRE",
-      "storageCapacity": 1200
+        "clientRequestToken": "3dd6d491-6345-420c-8603-4b1890a21140",
+        "fileSystemType": "WINDOWS",
+        "storageCapacity": 32,
+        "storageType": "SSD",
+        "subnetIds": [
+            "subnet-0ef14b887e41af692",
+            "subnet-0b610aa72600bac7f"
+        ],
+        "securityGroupIds": [
+            "sg-046b7131a9fe1aa38",
+            "sg-04695061bdc9536dd"
+        ],
+        "kmsKeyId": "arn:aws:kms:us-east-1:123456789:key/2ab1a91b-19c7-46a1-b05d-b507e7c5ae15",
+        "windowsConfiguration": {
+            "selfManagedActiveDirectoryConfiguration": {
+                "domainName": "corp.internal.citizensbank.com",
+                "organizationalUnitDistinguishedName": "OU=FSX,OU=AWS,OU=ServersSecure,OU=!Common,DC=corp,DC=internal,DC=citizensbank,DC=com",
+                "fileSystemAdministratorsGroup": "DPT_FSx_Admin",
+                "userName": "svc_aws_fsx",
+                "dnsIps": [
+                    "10.162.56.15",
+                    "10.162.57.11"
+                ]
+            },
+            "deploymentType": "MULTI_AZ_1",
+            "preferredSubnetId": "subnet-0ef14b887e41af692",
+            "throughputCapacity": 32,
+            "automaticBackupRetentionDays": 30,
+            "diskIopsConfiguration": {
+                "mode": "AUTOMATIC"
+            }
+        }
     },
     "responseElements": {
-      "fileSystemId": "fs-0123456789abcdef0",
-      "fileSystemType": "LUSTRE",
-      "lifecycle": "CREATING"
+        "fileSystem": {
+            "ownerId": "123456789",
+            "creationTime": "Sep 6, 2024, 1:39:56 PM",
+            "fileSystemId": "fs-080dad876a621d53e",
+            "fileSystemType": "WINDOWS",
+            "lifecycle": "CREATING",
+            "storageCapacity": 32,
+            "storageType": "SSD",
+            "vpcId": "vpc-0892011c564b9173b",
+            "subnetIds": [
+                "subnet-0ef14b887e241af692",
+                "subnet-0b610aa732600bac7f"
+            ],
+            "kmsKeyId": "arn:aws:kms:us-east-1:123456789:key/2ab1a391b-19c7-46a1-b05d-b507e7c35ae15",
+            "resourceARN": "arn:aws:fsx:us-east-1:123456789:file-system/fs-080dad876a621d53e",
+            "windowsConfiguration": {
+                "selfManagedActiveDirectoryConfiguration": {
+                    "domainName": "corp.internal.citizensbank.com",
+                    "organizationalUnitDistinguishedName": "OU=FSX,OU=AWS,OU=ServersSecure,OU=!Common,DC=corp,DC=internal,DC=blabla,DC=com",
+                    "fileSystemAdministratorsGroup": "DPT_FSx_Admin",
+                    "userName": "svc_aws_fsx",
+                    "dnsIps": [
+                        "140.162.546.15",
+                        "140.162.547.11"
+                    ]
+                },
+                "deploymentType": "MULTI_AZ_1",
+                "preferredSubnetId": "subnet-0ef14b83487e41af692",
+                "throughputCapacity": 32,
+                "weeklyMaintenanceStartTime": "3:04:00",
+                "dailyAutomaticBackupStartTime": "10:00",
+                "automaticBackupRetentionDays": 30,
+                "copyTagsToBackups": false,
+                "auditLogConfiguration": {
+                    "fileAccessAuditLogLevel": "DISABLED",
+                    "fileShareAccessAuditLogLevel": "DISABLED"
+                },
+                "diskIopsConfiguration": {
+                    "mode": "AUTOMATIC",
+                    "iops": 96
+                }
+            }
+        }
     },
-    "requestID": "01234567-1234-1234-1234-1234567890ab",
-    "eventID": "abcdef12-3456-7890-abcd-ef1234567890",
+    "requestID": "02037b66-4c27-42dd-b6db-0d9293483070ee",
+    "eventID": "850c29a4-ca88-4786-863f-46a6b334218dbb",
+    "readOnly": false,
     "eventType": "AwsApiCall",
-    "recipientAccountId": "123456789012"
-  }
+    "apiVersion": "2018-03-01",
+    "managementEvent": true,
+    "recipientAccountId": "123456789",
+    "eventCategory": "Management",
+    "tlsDetails": {
+        "tlsVersion": "TLSv1.3",
+        "cipherSuite": "TLS_AES_128_GCM_SHA256",
+        "clientProvidedHostHeader": "fsx.us-east-1.amazonaws.com"
+    },
+    "sessionCredentialFromConsole": "true"
 }
-
-
-## Event pattern
-
-{
-  "source": ["aws.fsx"],
-  "detail-type": ["AWS API Call via CloudTrail"],
-  "detail": {
-    "eventSource": ["fsx.amazonaws.com"],
-    "eventName": ["CreateFileSystem"]
-  }
-}
-[ERROR] KeyError: 'fileSystemId'
-Traceback (most recent call last):
-  File "/var/task/lambda_function.py", line 21, in lambda_handler
-    file_system_id = event['detail']['responseElements']['fileSystemId']
