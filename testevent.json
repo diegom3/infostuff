@@ -49,4 +49,7 @@
     "eventName": ["CreateFileSystem"]
   }
 }
-
+[ERROR] KeyError: 'fileSystemId'
+Traceback (most recent call last):
+  File "/var/task/lambda_function.py", line 21, in lambda_handler
+    file_system_id = event['detail']['responseElements']['fileSystemId']
